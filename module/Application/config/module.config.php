@@ -54,4 +54,22 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [
+                    dirname(__DIR__, 1) . '/Entity',
+                ]
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver',
+                    // 'EshUsers' => __NAMESPACE__ . '_driver',
+                ],
+            ],
+        ],
+    ], 
 ];
